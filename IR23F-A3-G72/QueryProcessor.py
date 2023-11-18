@@ -36,7 +36,7 @@ class QueryProcessor:
                     if doc in doc_tfidf.keys():
                         doc_tfidf[doc].append(tempTfidf[tempDocID.index(doc)])
             
-            print(len(doc_tfidf))
+            # print(len(doc_tfidf))
 
         for doc in doc_tfidf.copy().keys():
             if len(doc_tfidf[doc]) != len(queryTokens):
@@ -87,4 +87,4 @@ class QueryProcessor:
 
 if __name__ == "__main__":
     q = QueryProcessor()
-    q.retrieveURLs("master of software engineering")
+    q.retrieveURLs("cristina lopes")
