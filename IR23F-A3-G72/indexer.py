@@ -20,6 +20,7 @@ class Indexer:
         self.textProcessor = TextProcessor()
         self.path = PathObj
         self.URLs = []
+        self.importantTokens_dict = {}
         
 
     def create_index_data(self):
@@ -30,9 +31,11 @@ class Indexer:
                         content = json.load(fileObj)
                         text = BeautifulSoup(content["content"], "html.parser")
                         self.URLs.append(content["url"])
-                        tokenList = self.textProcessor.get_tokenList(text)
-                        prepare_data(self.dict_docID, self.dict_tfidf, self.dict_wordfreq, tokenList, self.DocsCount)
-                        self.DocsCount += 1   
+                        content_tokenList = self.textProcessor.get_tokenList_for_content(text)
+                        important_tokens = self.textProcessor.get_tokenList_for_important_title_and_anchor(text)
+                        content_tokenList += important_tokens
+                        prepare_data(self.dict_docID, self.dict_tfidf, self.dict_wordfreq, content_tokenList, self.DocsCount, important_tokens, self.importantTokens_dict)
+                        self.DocsCount += 1
                         
             
 
@@ -45,7 +48,7 @@ class Indexer:
             
             self.dict_tfidf[word] = tempList
 
-        create_database(self.dict_docID, self.dict_tfidf, self.dict_wordfreq)
+        create_database(self.dict_docID, self.dict_tfidf, self.dict_wordfreq, self.importantTokens_dict)
 
         create_URL_table(self.URLs)
 

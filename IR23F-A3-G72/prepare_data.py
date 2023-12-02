@@ -1,7 +1,7 @@
 import math
 
 
-def prepare_data(dict_docID, dict_tfidf, dict_wordfreq, tokenList, doc_ID):
+def prepare_data(dict_docID, dict_tfidf, dict_wordfreq, tokenList, doc_ID, importantTokens, important_dict):
 
     for token in set(tokenList):
         if token not in dict_docID.keys():
@@ -21,11 +21,18 @@ def prepare_data(dict_docID, dict_tfidf, dict_wordfreq, tokenList, doc_ID):
             dict_tfidf[token] = [TF]
         else:
             dict_tfidf[token].append(TF)
+    
+    for importantToken in set(importantTokens):
+        if importantToken not in important_dict.keys():
+            important_dict[importantToken] = [str(doc_ID)]
+        else: 
+            important_dict[importantToken].append(str(doc_ID))
+
 
 def get_token_frequencies(token, tokenList):
      count = 0
      for word in tokenList:
-          if word == token.lower():
+          if word.lower() == token.lower():
                count += 1
      return count
 

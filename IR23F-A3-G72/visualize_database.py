@@ -2,14 +2,15 @@ import sqlite3
 
 conn = sqlite3.connect("WordsDatabase.db")
 cursor = conn.cursor()
+# cursor.execute("""
+#     select *
+#     from words
+# """)
+
 cursor.execute("""
     select *
-    from words
-""")
-
-cursor.execute(f"""
-    select *
-    from URLs
+    from ImportantWords
+    where word = 'cristina'
 """)
 
 
