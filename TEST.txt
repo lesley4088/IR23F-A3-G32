@@ -1,0 +1,35 @@
+<<<<<<< Updated upstream
+Good:
+1.ACM
+2.Master of software engineering
+3.UCI
+4.AI
+5.Research opportunity
+6.Undergraduate
+7.Nasa
+8.Machine learning partnership
+9.Cs major transfer
+
+Poor:
+1.Cristina lopes
+2.Information retrieval
+3.Machine learning
+4.Computer science
+5.Donald bren
+6.Python
+7.CS121
+8.Sql
+9.Database
+10.Information visualization
+11.Undergraduate uci
+12.Wechat
+	
+“CS121” and “wechat” are not contained in the given collection, 
+and when giving such a query to my search engine will lead to an error page. I added an exception to handle the problem. 
+
+Other queries performed poorly in terms of ranking. 
+I changed my previous ranking which is based on tfidf to cosine similarity. 
+Then I also reinforced my scoring process by increasing the weight of important words like title and anchor words.
+=======
+Test queries:
+>>>>>>> Stashed changes
